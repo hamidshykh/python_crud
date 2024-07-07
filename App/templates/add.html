@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+<!----Title on tab browser---->
+{% block title %} Add product {% endblock title %}
+
+<!----Navbar Content---->
+{% block navbar-content %}
+<i class="text-warning fas fa-plus"></i>&nbsp;&nbsp; Add Product
+{% endblock navbar-content %}
+
+<!----Page Content---->
+{% block content %}
+<div class="container">
+    <div class="row"> 
+        <div class="col-lg-12">
+            <div class="card card-body mt-5 {% block card-color %} border-dark text-light bg-secondary {% endblock card-color %}">
+                <span class="text-center">{% block card-title %} ENTER PRODUCT DATA BELOW {% endblock card-title %}</span>
+            </div>
+            <!-------form--------->
+            <form {% block action %} action="/add_product" {% endblock action %} method="POST" enctype="multipart/form-data" autocomplete="off" class="card p-3 border-dark mt-3 ">
+                {% csrf_token %}
+
+            <!-------- ====== block id denied here ====== ------->  
+                {% block value-id %}{% endblock value-id %}
+
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"><i class="fas fa-tshirt"></i></span>
+                    <input type="text" class="form-control" name="product" maxlength="40" placeholder="Product name" required {%block value-product %}{% endblock value-product %}>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"><i class="fas fa-dollar-sign"></i></span>
+                    <input type="text" class="form-control" name="purchase" maxlength="10" placeholder="Price of buy" required {%block value-purchase %}{% endblock value-purchase %}>
+                </div>
+
+                 <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"><i class="fas fa-hand-holding-usd"></i></span>
+                    <input type="text" class="form-control" name="sale" maxlength="10" placeholder="Price of sell" required {% block value-sale %}{% endblock value-sale %}>
+                </div>
+
+               <div class="input-group mb-3">
+                    <span class="side-label btn border-secondary bg-light"><i class="fab fa-buffer"></i></span>
+                    <input type="text" class="form-control" name="qty" maxlength="10" placeholder="Quantity" required {% block value-qty %}{% endblock value-qty %}>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label><span class="side-label btn border-secondary bg-light" style="border-radius: 4px 0px 0px 4px;"><i class="fas fa-child"></i></span></label>
+                    <select class="form-select" name="gender" required>
+                        {% block option %}
+                        <option value="" hidden>Select the gender</option>
+                        {% endblock option %}
+                        <option>disables</option>
+                        <option>M</option>
+                        <option>F</option>
+                        <option>U</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="note" rows="7" maxlength="1000" placeholder="Description is optional...">{% block note %}{% endblock note %}</textarea>
+                </div>
+
+                <div class="mt-4" style="width: 100%;">
+                    <button type="submit" class="btn btn-secondary mb-3">
+                        {% block btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Add Product {% endblock btn-action %}
+                    </button>
+                    <a href="{% url 'home' %}" class="btn btn-outline-dark mb-3 ms-2" style="width: 50px;" title="Back">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                    <button type="reset" class="btn btn-outline-dark mb-3 ms-2" style="width: 50px;" title="Reset">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div> 
+
+            </form>
+        </div>
+    </div>
+</div>
+<!-----END// container----->
+{% endblock content %}

@@ -1,0 +1,27 @@
+/*-------------------------------------
+# START CONFIGURATION
+--------------------*/
+html,
+body{
+    margin: 0;
+    height: 100%;
+    max-width: 100%;
+    /* overflow: hidden; */
+}
+/*-------------------------------------
+# FOOTER
+--------------------*/
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+footer,
+.push{
+    height: 50px;
+}
+/*-------------------------------------
+# OTHERs
+--------------------*/
+.side-label{
+    width: 45px;
+}
